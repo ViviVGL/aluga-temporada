@@ -21,7 +21,7 @@ feature 'Owner register property' do
     fill_in 'Descrição', with: 'Apartamento aconchegante em praia de Itanhaém'
     fill_in 'Regras de uso', with: 'Não fumar dentro do apartamento'
 
-    click_on 'Enviar'
+    click_on 'Cadastrar'
 
     expect(page).to have_content 'Imóvel cadastrado com sucesso'
 
@@ -37,5 +37,18 @@ feature 'Owner register property' do
     expect(page).to have_content 'apartamento.jpg'
     expect(page).to have_content 'Apartamento aconchegante em praia de Itanhaém'
     expect(page).to have_content 'Não fumar dentro do apartamento'
+  end
+
+  scenario 'and fills nothing' do
+
+    visit new_property_path
+
+    click_on 'Cadastrar'
+
+    expect(page).to have_content 'Você deve preencher o Título'
+    expect(page).to have_content 'Você deve preencher o Local'
+    expect(page).to have_content 'Você deve preencher o Tipo do Imóvel'
+    expect(page).to have_content 'Você deve preencher o Valor da diária'
+
   end
 end

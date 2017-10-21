@@ -1,5 +1,13 @@
 <h1>Cadastrar um Novo Imóvel</h1>
 
+<% if @property.errors.any? %>
+  <ul>
+  <% @property.errors.messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @property do |f| %>
   <div>
     <%= f.label :title, 'Título' %>
@@ -49,6 +57,6 @@
     <%= f.label :usage_rules, 'Regras de uso' %>
     <%= f.text_area :usage_rules %>
   </div>
-  <%= f.submit 'Enviar' %>
-  
+  <%= f.submit 'Cadastrar' %>
+
 <% end %>

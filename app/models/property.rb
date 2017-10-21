@@ -20,4 +20,17 @@
 #
 
 class Property < ApplicationRecord
+
+  validates :title, presence: {
+    message: 'Você deve preencher o Título'
+  }
+  validates :property_location, presence: {
+    message: 'Você deve preencher o Local'
+  }
+  validates :property_type, presence: {
+    message: 'Você deve preencher o Tipo do Imóvel'
+  }
+  validates :daily_rate, presence: {
+    message: 'Você deve preencher o Valor da diária'
+  }
 end
